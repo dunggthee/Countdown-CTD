@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Live Stage 2025 - Countdown to the Ultimate Experience">
+    <meta name="theme-color" content="#00ffff">
+    <title>Countdown Timer - Live Stage</title>
+    
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for easier customization and better browser support */
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --accent-color: #00ff00;
+            --background-dark: #0a0a2e;
+            --background-medium: #16213e;
+            --background-light: #0f3460;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(0, 255, 255, 0.8);
+            --border-radius: 15px;
+            --box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            --transition: all 0.3s ease;
+        }
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        body {
+            font-family: 'Orbitron', 'Arial', 'Helvetica Neue', sans-serif;
+            background: 
+                linear-gradient(45deg, 
+                    rgba(10, 10, 46, 0.8), 
+                    rgba(22, 33, 62, 0.8), 
+                    rgba(15, 52, 96, 0.8)
+                ),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%23000"/><text x="600" y="400" text-anchor="middle" fill="%2300ffff" font-size="48" font-family="Arial">Your Background Image Here</text><text x="600" y="460" text-anchor="middle" fill="%23ffffff" font-size="24" font-family="Arial" opacity="0.6">Upload your image to replace this</text></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Fix for iOS Safari background-attachment */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                background-attachment: scroll;
+            }
+        }
+        
+        /* Background overlay */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(10, 10, 46, 0.4), 
+                rgba(22, 33, 62, 0.4), 
+                rgba(15, 52, 96, 0.4)
+            );
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Background effects - optimized for performance */
+        .background-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            will-change: transform;
+        }
+        
+        .laser-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes gridPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.1; }
+        }
+        
+        .light-beam {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+            animation: beamMove 4s linear infinite;
+            will-change: transform;
+        }
+        
+        .light-beam:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .light-beam:nth-child(2) {
+            left: 30%;
+            animation-delay: 1s;
+        }
+        
+        .light-beam:nth-child(3) {
+            left: 70%;
+            animation-delay: 2s;
+        }
+        
+        .light-beam:nth-child(4) {
+            right: 15%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes beamMove {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        
+        .floating-particles {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--primary-color);
+            will-change: transform;
+        }
+        
+        .floating-particles:nth-child(5) {
+            left: 20%;
+            top: 30%;
+            animation-delay: 0s;
+        }
+        
+        .floating-particles:nth-child(6) {
+            left: 60%;
+            top: 60%;
+            animation-delay: 2s;
+        }
+        
+        .floating-particles:nth-child(7) {
+            left: 80%;
+            top: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+        
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            max-width: 100%;
+        }
+        
+        /* Typography */
+        .main-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* Fallback for browsers that don't support background-clip: text */
+        @supports not (-webkit-background-clip: text) {
+            .main-title {
+                color: var(--primary-color);
+                background: none;
+            }
+        }
+        
+        @keyframes textGlow {
+            0% { 
+                background-position: 0% 50%;
+                filter: brightness(1);
+            }
+            100% { 
+                background-position: 100% 50%;
+                filter: brightness(1.5);
+            }
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 400;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        
+        /* Countdown section */
+        .countdown-container {
+            display: flex;
+            gap: clamp(15px, 4vw, 30px);
+            margin: 50px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .countdown-box {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: clamp(15px, 4vw, 30px) clamp(10px, 3vw, 20px);
+            min-width: clamp(80px, 20vw, 120px);
+            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--box-shadow), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            animation: boxPulse 2s ease-in-out infinite alternate;
+            transition: var(--transition);
+            flex: 1 1 auto;
+            max-width: 150px;
+        }
+        
+        @keyframes boxPulse {
+            0% { 
+                box-shadow: 
+                    0 0 30px rgba(0, 255, 255, 0.3),
+                    inset 0 0 20px rgba(0, 255, 255, 0.1);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 50px rgba(0, 255, 255, 0.6),
+                    inset 0 0 30px rgba(0, 255, 255, 0.2);
+            }
+        }
+        
+        .countdown-number {
+            font-size: clamp(1.5rem, 6vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 0 10px var(--primary-color);
+            line-height: 1;
+            margin-bottom: 10px;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .countdown-label {
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+        
+        .event-info {
+            margin-top: 50px;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: var(--text-primary);
+            opacity: 0.7;
+        }
+        
+        /* Badges */
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .official-badge {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Background instructions */
+        .bg-instructions {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            border: 1px solid var(--primary-color);
+            z-index: 1001;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 90%;
+        }
+        
+        /* Content section */
+        .content-section {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Video section */
+        .video-section {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            overflow: hidden;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            flex: 1 1 350px;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: clamp(200px, 40vw, 300px);
+            background: linear-gradient(45deg, var(--background-dark), var(--background-medium));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .auto-video {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(0, 255, 255, 0.1), 
+                rgba(255, 0, 255, 0.1), 
+                rgba(0, 255, 0, 0.1),
+                rgba(255, 255, 0, 0.1)
+            );
+            background-size: 400% 400%;
+            animation: videoGradient 8s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+        }
+        
+        @keyframes videoGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="none" stroke="white" stroke-width="2" opacity="0.3"/><polygon points="45,40 65,50 45,60" fill="white" opacity="0.8"/></svg>') center center no-repeat;
+            background-size: 60px 60px;
+            animation: playIconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes playIconPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .video-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-color);
+            width: 0%;
+            animation: videoProgress 15s linear infinite;
+        }
+        
+        @keyframes videoProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .video-controls {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .video-action {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            touch-action: manipulation;
+        }
+        
+        .video-action:hover,
+        .video-action:focus {
+            background: rgba(0, 255, 255, 0.3);
+            transform: scale(1.1);
+            outline: none;
+        }
+        
+        .heart-icon {
+            width: 20px;
+            height: 20px;
+            fill: #ff4757;
+        }
+        
+        .comment-icon,
+        .share-icon {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .like-count,
+        .comment-count {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .video-info {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .video-title {
+            color: white;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .comment-section {
+            max-height: 100px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) rgba(0, 0, 0, 0.3);
+        }
+        
+        .comment-section::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .comment-section::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .comment-section::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .comment {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+        }
+        
+        .comment-author {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .comment-text {
+            color: white;
+            margin-top: 2px;
+        }
+        
+        .comment-input-section {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .comment-input {
+            flex: 1;
+            padding: 6px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            color: white;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+        }
+        
+        .comment-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .comment-submit {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 15px;
+            color: white;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+            font-weight: 600;
+            transition: var(--transition);
+            touch-action: manipulation;
+        }
+        
+        .comment-submit:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Messenger section */
+        .messenger-section {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            z-index: 1000;
+            flex: 1 1 350px;
+        }
+        
+        .messenger-container {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            overflow: hidden;
+        }
+        
+        .messenger-header {
+            padding: 15px 20px;
+            background: linear-gradient(45deg, #0084ff, #00c6ff);
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+        
+        .messenger-body {
+            padding: 20px;
+        }
+        
+        .message-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            margin-bottom: 15px;
+            resize: vertical;
+            font-size: clamp(0.8rem, 2vw, 14px);
+            line-height: 1.5;
+        }
+        
+        .message-input::placeholder {
+            color: rgba(0, 255, 255, 0.6);
+        }
+        
+        .send-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--primary-color), #0084ff);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: clamp(0.9rem, 2.5vw, 16px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            touch-action: manipulation;
+        }
+        
+        .send-button:hover,
+        .send-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+            outline: none;
+        }
+        
+        /* Toggle buttons */
+        .toggle-buttons {
+            position: relative;
+            display: flex;
+            gap: 20px;
+            z-index: 200;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .toggle-btn {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            touch-action: manipulation;
+        }
+        
+        .toggle-btn:hover,
+        .toggle-btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+            outline: none;
+        }
+        
+        /* Hover effects for countdown boxes */
+        .countdown-box:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        /* Heart beat animation */
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .background-overlay,
+            .laser-grid,
+            .light-beam,
+            .floating-particles,
+            .countdown-box,
+            .auto-video,
+            .video-overlay,
+            .video-progress {
+                animation: none !important;
+            }
+        }
+        
+        /* High contrast support */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary-color: #ffffff;
+                --secondary-color: #ffffff;
+                --accent-color: #ffffff;
+                --text-primary: #ffffff;
+            }
+            
+            .countdown-box,
+            .video-section,
+            .messenger-container {
+                border-width: 3px;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            /* Already dark by default */
+        }
+        
+        /* Responsive breakpoints */
+        
+        /* Large tablets and small desktops */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .content-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .video-section,
+            .messenger-section {
+                max-width: 600px;
+            }
+        }
+        
+        /* Small tablets */
+        @media (max-width: 768px) {
+            .main-title {
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+            }
+            
+            .subtitle {
+                margin-bottom: 30px;
+                letter-spacing: 1px;
+            }
+            
+            .countdown-container {
+                gap: 15px;
+                margin: 30px 0;
+            }
+            
+            .countdown-box {
+                min-width: 80px;
+            }
+            
+            .logo,
+            .official-badge {
+                position: static;
+                margin: 10px;
+                display: inline-block;
+            }
+            
+            .content-section {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 10px;
+                margin: 30px auto;
+            }
+            
+            .video-section,
+            .messenger-section {
+                max-width: 100%;
+            }
+            
+            .video-container {
+                height: 250px;
+            }
+            
+            .toggle-buttons {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+            }
+            
+            .toggle-btn {
+                padding: 15px 20px;
+            }
+            
+            .bg-instructions {
+                font-size: 0.7rem;
+                padding: 8px 15px;
+            }
+        }
+        
+        /* Mobile phones */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .countdown-container {
+                gap: 10px;
+            }
+            
+            .countdown-box {
+                padding: 15px 10px;
+                min-width: 70px;
+            }
+            
+            .event-info {
+                margin-top: 30px;
+            }
+            
+            .content-section {
+                padding: 0 5px;
+                margin: 20px auto;
+            }
+            
+            .messenger-body,
+            .video-info {
+                padding: 15px;
+            }
+            
+            .message-input {
+                min-height: 100px;
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            .video-controls {
+                gap: 10px;
+            }
+            
+            .video-action {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .like-count,
+            .comment-count {
+                bottom: -20px;
+                font-size: 0.6rem;
+            }
+        }
+        
+        /* Very small screens */
+        @media (max-width: 320px) {
+            .countdown-container {
+                gap: 8px;
+            }
+            
+            .countdown-box {
+                min-width: 60px;
+                padding: 12px 8px;
+            }
+            
+            .countdown-number {
+                font-size: 1.2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+            
+            .bg-instructions {
+                font-size: 0.6rem;
+                padding: 6px 12px;
+                top: 10px;
+            }
+        }
+        
+        /* Landscape orientation on mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                min-height: auto;
+                padding: 10px;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .countdown-container {
+                margin: 20px 0;
+            }
+            
+            .event-info {
+                margin-top: 20px;
+            }
+            
+            .toggle-buttons {
+                margin-top: 15px;
+            }
+            
+            .bg-instructions {
+                top: 5px;
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .background-overlay,
+            .background-effects,
+            .video-section,
+            .messenger-section,
+            .toggle-buttons,
+            .bg-instructions {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .main-title,
+            .subtitle,
+            .countdown-number,
+            .countdown-label {
+                color: black !important;
+                background: none !important;
+                -webkit-text-fill-color: black !important;
+            }
+            
+            .countdown-box {
+                border: 2px solid black !important;
+                background: white !important;
+            }
+        }
+        
+        /* Focus styles for accessibility */
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        /* High DPI/Retina display optimizations */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .countdown-box,
+            .video-section,
+            .messenger-container {
+                border-width: 1px;
+            }
+        }
+        
+        /* Force GPU acceleration for smoother animations */
+        .countdown-box,
+        .video-action,
+        .toggle-btn,
+        .send-button,
+        .comment-submit {
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="background-overlay"></div>
+    
+    <div class="bg-instructions" role="banner" aria-label="Background customization instructions">
+        💡 Thay background: Sửa URL ảnh trong CSS (dòng background-image)
+    </div>
+    
+    <div class="background-effects" aria-hidden="true">
+        <div class="laser-grid"></div>
+        <div class="light-beam"></div>
+        <div class="light-beam"></div>
+        <div class="light-beam"></div>
+        <div class="light-beam"></div>
+        <div class="floating-particles"></div>
+        <div class="floating-particles"></div>
+        <div class="floating-particles"></div>
+    </div>
+    
+    <!-- Header badges -->
+    <div class="official-badge" role="banner">OFFICIAL</div>
+    <div class="logo" role="banner">LIVE</div>
+    
+    <!-- Main content -->
+    <main class="container">
+        <header>
+            <h1 class="main-title">LIVE STAGE</h1>
+            <p class="subtitle">Countdown to Event</p>
+        </header>
+        
+        <!-- Countdown timer -->
+        <section class="countdown-container" role="timer" aria-label="Event countdown timer">
+            <div class="countdown-box">
+                <div class="countdown-number" id="days" aria-label="Days remaining">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="hours" aria-label="Hours remaining">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="minutes" aria-label="Minutes remaining">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="seconds" aria-label="Seconds remaining">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </section>
+        
+        <div class="event-info">
+            <p>🎵 Get ready for an amazing experience</p>
+        </div>
+        
+        <nav class="toggle-buttons">
+            <button class="toggle-btn" onclick="scrollToContent()" aria-label="Scroll to video and messaging content">
+                🎬💬 View Content
+            </button>
+        </nav>
+    </main>
+    
+    <!-- Content Section -->
+    <section class="content-section" id="contentSection">
+        <!-- Video Section -->
+        <article class="video-section" id="videoSection">
+            <div class="video-container" role="img" aria-label="Live Stage 2025 preview video">
+                <div class="auto-video">
+                    🎵 LIVE STAGE 2025<br/>
+                    <small style="font-size: 0.8rem; opacity: 0.8;">Official Preview</small>
+                    <div class="video-progress" aria-hidden="true"></div>
+                </div>
+                <div class="video-overlay" aria-hidden="true"></div>
+                <div class="video-controls">
+                    <button class="video-action" onclick="toggleLike()" aria-label="Like this video" title="Like">
+                        <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/>
+                        </svg>
+                        <span class="like-count" id="likeCount">128</span>
+                    </button>
+                    <button class="video-action" onclick="focusComment()" aria-label="Comment on this video" title="Comment">
+                        <svg class="comment-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z"/>
+                        </svg>
+                        <span class="comment-count" id="commentCount">45</span>
+                    </button>
+                    <button class="video-action" onclick="shareVideo()" aria-label="Share this video" title="Share">
+                        <svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="video-info">
+                <h3 class="video-title">🎵 Live Stage 2025 - Countdown to the Ultimate Experience</h3>
+                <div class="comment-section" id="commentSection" role="log" aria-label="Video comments">
+                    <div class="comment">
+                        <div class="comment-author">@musicfan2025</div>
+                        <div class="comment-text">Không thể chờ đợi được nữa! 🔥</div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-author">@stagelover</div>
+                        <div class="comment-text">Countdown đẹp quá! ✨</div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-author">@viewer123</div>
+                        <div class="comment-text">Khi nào diễn ra vậy?</div>
+                    </div>
+                </div>
+                <div class="comment-input-section">
+                    <label for="commentInput" class="sr-only">Write a comment</label>
+                    <input 
+                        class="comment-input" 
+                        id="commentInput" 
+                        placeholder="Viết bình luận..." 
+                        maxlength="100"
+                        aria-label="Comment input"
+                    >
+                    <button class="comment-submit" onclick="addComment()" aria-label="Submit comment">
+                        Gửi
+                    </button>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Messenger Section -->
+        <aside class="messenger-section" id="messengerSection">
+            <div class="messenger-container">
+                <header class="messenger-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M8.5,9A1.5,1.5 0 0,0 7,10.5A1.5,1.5 0 0,0 8.5,12A1.5,1.5 0 0,0 10,10.5A1.5,1.5 0 0,0 8.5,9M15.5,9A1.5,1.5 0 0,0 14,10.5A1.5,1.5 0 0,0 15.5,12A1.5,1.5 0 0,0 17,10.5A1.5,1.5 0 0,0 15.5,9M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z"/>
+                    </svg>
+                    💬 Send Message to Live Stage
+                </header>
+                <div class="messenger-body">
+                    <label for="messageInput" class="sr-only">Message content</label>
+                    <textarea 
+                        class="message-input" 
+                        id="messageInput" 
+                        placeholder="Viết tin nhắn của bạn...&#10;&#10;Ví dụ:&#10;- Hỏi về thời gian sự kiện&#10;- Đăng ký tham gia&#10;- Chia sẻ cảm xúc của bạn&#10;- Gửi lời chúc"
+                        aria-label="Message input"
+                    ></textarea>
+                    <button class="send-button" onclick="sendMessage()" aria-label="Send message">
+                        📤 Gửi Tin Nhắn
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </section>
+
+    <!-- Screen reader only content -->
+    <div class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;">
+        <p>Live Stage 2025 countdown timer showing days, hours, minutes, and seconds remaining until the event.</p>
+    </div>
+
+    <script>
+        // Enhanced JavaScript with better browser compatibility and performance
+        (function() {
+            'use strict';
+            
+            // Feature detection
+            const hasLocalStorage = (function() {
+                try {
+                    const test = 'test';
+                    localStorage.setItem(test, test);
+                    localStorage.removeItem(test);
+                    return true;
+                } catch(e) {
+                    return false;
+                }
+            })();
+            
+            const hasSessionStorage = (function() {
+                try {
+                    const test = 'test';
+                    sessionStorage.setItem(test, test);
+                    sessionStorage.removeItem(test);
+                    return true;
+                } catch(e) {
+                    return false;
+                }
+            })();
+            
+            // Set target date (30 days from now at 8:00 PM)
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 30);
+            targetDate.setHours(20, 0, 0, 0);
+            
+            // Cache DOM elements
+            const elements = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds'),
+                messageInput: document.getElementById('messageInput'),
+                commentInput: document.getElementById('commentInput'),
+                commentSection: document.getElementById('commentSection'),
+                likeCount: document.getElementById('likeCount'),
+                commentCount: document.getElementById('commentCount')
+            };
+            
+            // State management
+            let state = {
+                likeCount: 128,
+                isLiked: false,
+                commentCount: 45
+            };
+            
+            // Load saved state if available
+            if (hasLocalStorage) {
+                try {
+                    const saved = localStorage.getItem('liveStageState');
+                    if (saved) {
+                        const savedState = JSON.parse(saved);
+                        state = Object.assign(state, savedState);
+                    }
+                } catch(e) {
+                    console.warn('Could not load saved state');
+                }
+            }
+            
+            // Apply loaded state
+            if (elements.likeCount) elements.likeCount.textContent = state.likeCount;
+            if (elements.commentCount) elements.commentCount.textContent = state.commentCount;
+            
+            // Save state function
+            function saveState() {
+                if (hasLocalStorage) {
+                    try {
+                        localStorage.setItem('liveStageState', JSON.stringify(state));
+                    } catch(e) {
+                        console.warn('Could not save state');
+                    }
+                }
+            }
+            
+            // Countdown update function with better performance
+            function updateCountdown() {
+                const now = Date.now();
+                const distance = targetDate.getTime() - now;
+                
+                if (distance < 0) {
+                    if (elements.days) elements.days.textContent = '00';
+                    if (elements.hours) elements.hours.textContent = '00';
+                    if (elements.minutes) elements.minutes.textContent = '00';
+                    if (elements.seconds) elements.seconds.textContent = '00';
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Use requestAnimationFrame for smoother updates
+                requestAnimationFrame(() => {
+                    if (elements.days) elements.days.textContent = String(days).padStart(2, '0');
+                    if (elements.hours) elements.hours.textContent = String(hours).padStart(2, '0');
+                    if (elements.minutes) elements.minutes.textContent = String(minutes).padStart(2, '0');
+                    if (elements.seconds) elements.seconds.textContent = String(seconds).padStart(2, '0');
+                });
+            }
+            
+            // Start countdown with better timing
+            let countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown(); // Run immediately
+            
+            // Pause countdown when tab is not visible (performance optimization)
+            let isTabVisible = true;
+            
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    isTabVisible = false;
+                    clearInterval(countdownInterval);
+                } else {
+                    isTabVisible = true;
+                    updateCountdown(); // Update immediately when tab becomes visible
+                    countdownInterval = setInterval(updateCountdown, 1000);
+                }
+            });
+            
+            // Enhanced interaction effects with better performance
+            function addHoverEffects() {
+                const countdownBoxes = document.querySelectorAll('.countdown-box');
+                countdownBoxes.forEach(box => {
+                    box.addEventListener('mouseenter', function() {
+                        if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                            this.style.transform = 'scale(1.05) translateY(-5px)';
+                            this.style.transition = 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                        }
+                    });
+                    
+                    box.addEventListener('mouseleave', function() {
+                        this.style.transform = '';
+                    });
+                    
+                    // Touch support
+                    box.addEventListener('touchstart', function() {
+                        if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                            this.style.transform = 'scale(1.02)';
+                        }
+                    });
+                    
+                    box.addEventListener('touchend', function() {
+                        this.style.transform = '';
+                    });
+                });
+            }
+            
+            // Initialize hover effects when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', addHoverEffects);
+            } else {
+                addHoverEffects();
+            }
+            
+            // Enhanced particle system with performance throttling
+            function createRandomParticle() {
+                if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                    return;
+                }
+                
+                const backgroundEffects = document.querySelector('.background-effects');
+                if (!backgroundEffects) return;
+                
+                const particle = document.createElement('div');
+                particle.className = 'floating-particles';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                backgroundEffects.appendChild(particle);
+                
+                // Clean up particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, 8000);
+            }
+            
+            // Throttle particle creation based on device performance
+            let particleInterval;
+            
+            function startParticleSystem() {
+                // Detect device performance heuristically
+                const isLowEnd = navigator.hardwareConcurrency <= 2 || 
+                                navigator.deviceMemory <= 2 || 
+                                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                const interval = isLowEnd ? 4000 : 2000; // Less frequent on low-end devices
+                particleInterval = setInterval(createRandomParticle, interval);
+            }
+            
+            // Start particle system
+            startParticleSystem();
+            
+            // Global functions (attached to window for onclick handlers)
+            window.scrollToContent = function() {
+                const contentSection = document.getElementById('contentSection');
+                if (contentSection) {
+                    contentSection.scrollIntoView({ 
+                        behavior: window.matchMedia('(prefers-reduced-motion: no-preference)').matches ? 'smooth' : 'auto',
+                        block: 'start' 
+                    });
+                }
+            };
+            
+            window.sendMessage = function() {
+                const messageInput = elements.messageInput;
+                if (!messageInput) return;
+                
+                const message = messageInput.value.trim();
+                
+                if (message) {
+                    // Enhanced user feedback
+                    const button = document.querySelector('.send-button');
+                    const originalText = button.textContent;
+                    button.textContent = 'Đang gửi...';
+                    button.disabled = true;
+                    
+                    // Simulate sending process
+                    setTimeout(() => {
+                        // Create messenger URL with encoded message
+                        const messengerUrl = `https://m.me/YOUR_PAGE_ID?text=${encodeURIComponent(message)}`;
+                        
+                        // Show confirmation with better UX
+                        if (window.confirm(`Tin nhắn: "${message}"\n\nBạn sẽ được chuyển đến Messenger. Tiếp tục?`)) {
+                            // Try to open in same tab first, fallback to new tab
+                            try {
+                                window.open(messengerUrl, '_blank');
+                            } catch(e) {
+                                window.location.href = messengerUrl;
+                            }
+                            
+                            messageInput.value = '';
+                        }
+                        
+                        // Reset button
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }, 1000);
+                } else {
+                    // Enhanced error feedback
+                    messageInput.focus();
+                    messageInput.style.borderColor = '#ff4757';
+                    setTimeout(() => {
+                        messageInput.style.borderColor = '';
+                    }, 2000);
+                    
+                    // Accessible alert
+                    const alert = document.createElement('div');
+                    alert.textContent = 'Vui lòng nhập tin nhắn!';
+                    alert.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#ff4757;color:white;padding:15px 25px;border-radius:25px;z-index:10000;font-weight:bold;';
+                    document.body.appendChild(alert);
+                    
+                    setTimeout(() => {
+                        if (alert.parentNode) {
+                            alert.remove();
+                        }
+                    }, 3000);
+                }
+            };
+            
+            // Enhanced video simulation
+            let videoMessageIndex = 0;
+            const videoMessages = [
+                '🎵 LIVE STAGE 2025<br/><small style="font-size: 0.8rem; opacity: 0.8;">Coming Soon...</small>',
+                '✨ Epic Performance<br/><small style="font-size: 0.8rem; opacity: 0.8;">Get Ready!</small>',
+                '🎪 Ultimate Experience<br/><small style="font-size: 0.8rem; opacity: 0.8;">Don\'t Miss It!</small>',
+                '🔥 Live Entertainment<br/><small style="font-size: 0.8rem; opacity: 0.8;">Be There!</small>'
+            ];
+            
+            function simulateAutoVideo() {
+                const videoContent = document.querySelector('.auto-video');
+                if (!videoContent) return;
+                
+                function updateVideoContent() {
+                    videoContent.innerHTML = videoMessages[videoMessageIndex] + '<div class="video-progress"></div>';
+                    videoMessageIndex = (videoMessageIndex + 1) % videoMessages.length;
+                }
+                
+                setInterval(updateVideoContent, 15000);
+            }
+            
+            // Start video simulation
+            simulateAutoVideo();
+            
+            // Enhanced like functionality
+            window.toggleLike = function() {
+                const heartIcon = document.querySelector('.heart-icon');
+                const likeCountElement = elements.likeCount;
+                
+                if (!heartIcon || !likeCountElement) return;
+                
+                if (!state.isLiked) {
+                    state.likeCount++;
+                    state.isLiked = true;
+                    heartIcon.style.fill = '#ff4757';
+                    
+                    // Enhanced animation
+                    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                        heartIcon.parentElement.style.animation = 'heartBeat 0.6s ease';
+                        
+                        // Create floating heart effect
+                        const floatingHeart = heartIcon.cloneNode(true);
+                        floatingHeart.style.cssText = 'position:absolute;pointer-events:none;z-index:1000;animation:floatHeart 2s ease forwards;';
+                        heartIcon.parentElement.appendChild(floatingHeart);
+                        
+                        setTimeout(() => {
+                            if (floatingHeart.parentNode) {
+                                floatingHeart.remove();
+                            }
+                        }, 2000);
+                    }
+                } else {
+                    state.likeCount--;
+                    state.isLiked = false;
+                    heartIcon.style.fill = '#ffffff';
+                }
+                
+                likeCountElement.textContent = state.likeCount;
+                saveState();
+                
+                // Reset animation
+                setTimeout(() => {
+                    heartIcon.parentElement.style.animation = '';
+                }, 600);
+            };
+            
+            // Enhanced comment functionality
+            window.addComment = function() {
+                const commentInput = elements.commentInput;
+                const commentSection = elements.commentSection;
+                const commentCountElement = elements.commentCount;
+                
+                if (!commentInput || !commentSection || !commentCountElement) return;
+                
+                const commentText = commentInput.value.trim();
+                
+                if (commentText) {
+                    const newComment = document.createElement('div');
+                    newComment.className = 'comment';
+                    newComment.innerHTML = `
+                        <div class="comment-author">@you</div>
+                        <div class="comment-text">${commentText.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+                    `;
+                    
+                    // Add with animation
+                    newComment.style.opacity = '0';
+                    newComment.style.transform = 'translateY(20px)';
+                    commentSection.appendChild(newComment);
+                    
+                    // Animate in
+                    requestAnimationFrame(() => {
+                        newComment.style.transition = 'all 0.3s ease';
+                        newComment.style.opacity = '1';
+                        newComment.style.transform = 'translateY(0)';
+                    });
+                    
+                    commentSection.scrollTop = commentSection.scrollHeight;
+                    
+                    // Update comment count
+                    state.commentCount++;
+                    commentCountElement.textContent = state.commentCount;
+                    saveState();
+                    
+                    commentInput.value = '';
+                    
+                    // Success feedback
+                    commentInput.style.borderColor = '#00ff00';
+                    setTimeout(() => {
+                        commentInput.style.borderColor = '';
+                    }, 1000);
+                } else {
+                    // Error feedback
+                    commentInput.focus();
+                    commentInput.style.borderColor = '#ff4757';
+                    setTimeout(() => {
+                        commentInput.style.borderColor = '';
+                    }, 2000);
+                }
+            };
+            
+            window.focusComment = function() {
+                const commentInput = elements.commentInput;
+                if (commentInput) {
+                    commentInput.focus();
+                }
+            };
+            
+            // Enhanced share functionality
+            window.shareVideo = function() {
+                const shareData = {
+                    title: 'Live Stage 2025',
+                    text: 'Check out this amazing Live Stage 2025 countdown! 🎵✨',
+                    url: window.location.href
+                };
+                
+                if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+                    navigator.share(shareData).catch(err => {
+                        console.log('Error sharing:', err);
+                        fallbackShare();
+                    });
+                } else {
+                    fallbackShare();
+                }
+                
+                function fallbackShare() {
+                    // Try clipboard API first
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(window.location.href).then(() => {
+                            showToast('Link đã được copy! Chia sẻ với bạn bè nhé! 🎵', 'success');
+                        }).catch(() => {
+                            // Fallback to older method
+                            fallbackCopy();
+                        });
+                    } else {
+                        fallbackCopy();
+                    }
+                }
+                
+                function fallbackCopy() {
+                    // Create temporary input for copying
+                    const tempInput = document.createElement('input');
+                    tempInput.style.position = 'absolute';
+                    tempInput.style.left = '-9999px';
+                    tempInput.value = window.location.href;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    tempInput.setSelectionRange(0, 99999);
+                    
+                    try {
+                        document.execCommand('copy');
+                        showToast('Link đã được copy! Chia sẻ với bạn bè nhé! 🎵', 'success');
+                    } catch (err) {
+                        showToast('Không thể copy link. Vui lòng copy thủ công: ' + window.location.href, 'error');
+                    }
+                    
+                    document.body.removeChild(tempInput);
+                }
+            };
+            
+            // Toast notification system
+            function showToast(message, type = 'info') {
+                const toast = document.createElement('div');
+                toast.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${type === 'success' ? '#00ff00' : type === 'error' ? '#ff4757' : '#00ffff'};
+                    color: ${type === 'success' ? '#000' : '#fff'};
+                    padding: 15px 25px;
+                    border-radius: 25px;
+                    z-index: 10001;
+                    font-weight: bold;
+                    max-width: 300px;
+                    word-wrap: break-word;
+                    transform: translateX(400px);
+                    transition: transform 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                `;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                
+                // Animate in
+                requestAnimationFrame(() => {
+                    toast.style.transform = 'translateX(0)';
+                });
+                
+                // Auto remove
+                setTimeout(() => {
+                    toast.style.transform = 'translateX(400px)';
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.remove();
+                        }
+                    }, 300);
+                }, 4000);
+            }
+            
+            // Keyboard event handlers
+            function setupKeyboardHandlers() {
+                // Enter key support for message input
+                if (elements.messageInput) {
+                    elements.messageInput.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            window.sendMessage();
+                        }
+                    });
+                }
+                
+                // Enter key support for comment input
+                if (elements.commentInput) {
+                    elements.commentInput.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            window.addComment();
+                        }
+                    });
+                }
+                
+                // Keyboard shortcuts
+                document.addEventListener('keydown', function(e) {
+                    // Alt + C to focus comment input
+                    if (e.altKey && e.key === 'c') {
+                        e.preventDefault();
+                        window.focusComment();
+                    }
+                    
+                    // Alt + M to focus message input
+                    if (e.altKey && e.key === 'm') {
+                        e.preventDefault();
+                        const messageInput = elements.messageInput;
+                        if (messageInput) {
+                            messageInput.focus();
+                            window.scrollToContent();
+                        }
+                    }
+                    
+                    // Alt + L to like
+                    if (e.altKey && e.key === 'l') {
+                        e.preventDefault();
+                        window.toggleLike();
+                    }
+                    
+                    // Alt + S to share
+                    if (e.altKey && e.key === 's') {
+                        e.preventDefault();
+                        window.shareVideo();
+                    }
+                });
+            }
+            
+            // Setup keyboard handlers
+            setupKeyboardHandlers();
+            
+            // Enhanced accessibility features
+            function setupAccessibility() {
+                // Announce countdown updates to screen readers
+                let lastAnnouncement = '';
+                const announceCountdown = function() {
+                    if (!elements.days || !elements.hours || !elements.minutes) return;
+                    
+                    const days = elements.days.textContent;
+                    const hours = elements.hours.textContent;
+                    const minutes = elements.minutes.textContent;
+                    
+                    const announcement = `${days} days, ${hours} hours, ${minutes} minutes remaining`;
+                    
+                    if (announcement !== lastAnnouncement) {
+                        lastAnnouncement = announcement;
+                        
+                        // Create live region for screen readers
+                        let liveRegion = document.getElementById('countdown-live-region');
+                        if (!liveRegion) {
+                            liveRegion = document.createElement('div');
+                            liveRegion.id = 'countdown-live-region';
+                            liveRegion.setAttribute('aria-live', 'polite');
+                            liveRegion.style.cssText = 'position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;';
+                            document.body.appendChild(liveRegion);
+                        }
+                        
+                        // Announce every minute
+                        if (elements.seconds && elements.seconds.textContent === '00') {
+                            liveRegion.textContent = announcement;
+                        }
+                    }
+                };
+                
+                // Check every second but only announce when needed
+                setInterval(announceCountdown, 1000);
+                
+                // Focus management for modal-like interactions
+                const trapFocus = function(element) {
+                    const focusableElements = element.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    
+                    if (focusableElements.length === 0) return;
+                    
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    
+                    element.addEventListener('keydown', function(e) {
+                        if (e.key === 'Tab') {
+                            if (e.shiftKey) {
+                                if (document.activeElement === firstElement) {
+                                    e.preventDefault();
+                                    lastElement.focus();
+                                }
+                            } else {
+                                if (document.activeElement === lastElement) {
+                                    e.preventDefault();
+                                    firstElement.focus();
+                                }
+                            }
+                        }
+                        
+                        if (e.key === 'Escape') {
+                            e.preventDefault();
+                            // Could be used for closing modals
+                        }
+                    });
+                };
+                
+                // Apply focus trap to messenger and video sections
+                const messengerSection = document.getElementById('messengerSection');
+                const videoSection = document.getElementById('videoSection');
+                
+                if (messengerSection) trapFocus(messengerSection);
+                if (videoSection) trapFocus(videoSection);
+            }
+            
+            // Initialize accessibility features
+            setupAccessibility();
+            
+            // Enhanced error handling and recovery
+            window.addEventListener('error', function(e) {
+                console.error('JavaScript error:', e.error);
+                
+                // Try to recover countdown if it stops
+                if (!countdownInterval) {
+                    console.log('Attempting to restart countdown...');
+                    countdownInterval = setInterval(updateCountdown, 1000);
+                    updateCountdown();
+                }
+            });
+            
+            // Performance monitoring
+            function monitorPerformance() {
+                if ('performance' in window && 'memory' in performance) {
+                    const checkMemory = function() {
+                        const memory = performance.memory;
+                        const usedMB = Math.round(memory.usedJSHeapSize / 1048576);
+                        const totalMB = Math.round(memory.totalJSHeapSize / 1048576);
+                        
+                        // If memory usage is high, reduce particle frequency
+                        if (usedMB > 50 && particleInterval) {
+                            clearInterval(particleInterval);
+                            particleInterval = setInterval(createRandomParticle, 5000); // Slower particles
+                        }
+                        
+                        console.log(`Memory usage: ${usedMB}MB / ${totalMB}MB`);
+                    };
+                    
+                    // Check memory every 30 seconds
+                    setInterval(checkMemory, 30000);
+                }
+                
+                // Monitor frame rate
+                let frameCount = 0;
+                let lastTime = performance.now();
+                
+                function measureFPS() {
+                    frameCount++;
+                    const currentTime = performance.now();
+                    
+                    if (currentTime - lastTime >= 1000) {
+                        const fps = Math.round(frameCount * 1000 / (currentTime - lastTime));
+                        
+                        // If FPS is low, disable some animations
+                        if (fps < 30 && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                            console.log('Low FPS detected, reducing animations');
+                            document.documentElement.style.setProperty('--transition', 'none');
+                            
+                            // Disable particle system
+                            if (particleInterval) {
+                                clearInterval(particleInterval);
+                                particleInterval = null;
+                            }
+                        }
+                        
+                        frameCount = 0;
+                        lastTime = currentTime;
+                    }
+                    
+                    requestAnimationFrame(measureFPS);
+                }
+                
+                // Start FPS monitoring
+                requestAnimationFrame(measureFPS);
+            }
+            
+            // Start performance monitoring
+            if (window.performance) {
+                monitorPerformance();
+            }
+            
+            // Network status handling
+            function handleNetworkStatus() {
+                const updateOnlineStatus = function() {
+                    if (!navigator.onLine) {
+                        showToast('Mất kết nối internet. Một số tính năng có thể không hoạt động.', 'error');
+                    } else {
+                        showToast('Đã kết nối lại internet!', 'success');
+                    }
+                };
+                
+                window.addEventListener('online', updateOnlineStatus);
+                window.addEventListener('offline', updateOnlineStatus);
+            }
+            
+            // Initialize network monitoring
+            handleNetworkStatus();
+            
+            // Service Worker registration (for offline support)
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    // This would register a service worker if you create one
+                    // navigator.serviceWorker.register('/sw.js');
+                });
+            }
+            
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', function() {
+                clearInterval(countdownInterval);
+                if (particleInterval) {
+                    clearInterval(particleInterval);
+                }
+                saveState();
+            });
+            
+            // Add floating heart animation style
+            const heartStyle = document.createElement('style');
+            heartStyle.textContent = `
+                @keyframes floatHeart {
+                    0% { transform: translateY(0) scale(1); opacity: 1; }
+                    50% { transform: translateY(-30px) scale(1.5); opacity: 0.8; }
+                    100% { transform: translateY(-60px) scale(0.5); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(heartStyle);
+            
+            // Initialize everything when DOM is fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('Live Stage 2025 countdown initialized successfully!');
+                
+                // Announce to screen readers
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.style.cssText = 'position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;';
+                announcement.textContent = 'Live Stage 2025 countdown page loaded. Use Alt+M for messaging, Alt+C for comments, Alt+L to like, Alt+S to share.';
+                document.body.appendChild(announcement);
+            });
+            
+        })();
+    </script>
+</body>
+</html>
